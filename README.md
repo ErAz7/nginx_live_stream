@@ -80,7 +80,7 @@ as HLS manifest and finally HLS gets segments and play them by turn
 
 For more details on Nginx configuration and what every line means, take a look [here](https://github.com/arut/nginx-rtmp-module/wiki/Directives)
 # Notice
-This app is implemented just to give you initial imagination of how you can create a live streaming website but before you use this in your products, you should add security aspects to it
+This app is implemented just to give you initial imagination of how you can create a live streaming website and needs lots of completions (especially in security aspects)
 
 # At Last
 Feel free to open issues if detected and ask any question you have
