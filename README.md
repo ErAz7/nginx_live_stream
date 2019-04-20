@@ -1,6 +1,6 @@
 # Live Stream
 
-A real, working live stream over RMTP protocol using Apache,node.js and Nginx 
+A live streaming app working over RTMP protocol using Apache,node.js and Nginx 
 
 # Configuration and usage
   
