@@ -2,7 +2,7 @@
 
 A live streaming app working over RTMP protocol using Apache,node.js and Nginx which will work just fine on any OS and any server
 
-# Configuration and usage
+# Configuration and Usage
   
   - install an Apache server and run it
   - download and put the content of **public_html** into your Apache server index directory
