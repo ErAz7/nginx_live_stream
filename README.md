@@ -75,9 +75,9 @@ A live streaming app working over RTMP protocol using Apache,node.js and Nginx w
 
   in ```nginx.cong``` file, Nginx will create HLS manifest and segments in the path specified by this line :
     
-  ```hls_path path_to_public_html/live;```
+  ```hls_path path_to_public_html/live/<stream_name>;```
 
-  and in a directory with the name server.js returns in __Location header__
+  <stream_name> is the value which server.js returns in __Location header__
 - now, when you enter __http://your.host__ in your browser, apache returns index.html which then loads index.js, then javascript sends XHR HTTP to port 333 which server.js is listening on and will return a JSON encoded array of live stream names
 - JS decodes string and displays live streams in links like :
 
