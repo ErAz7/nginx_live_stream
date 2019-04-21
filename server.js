@@ -34,8 +34,7 @@ http.createServer(function(request,response){
           console.log(('new stream: '+post_data_decoded.name).green.bold);
         break;
         case 'publish_done':
-          response.setHeader('Location', post_data_decoded.name);
-          response.statusCode = 308;
+          response.statusCode = 200;
           streams.splice(streams.indexOf(post_data_decoded.name),1);
           console.log(('stream closed: '+post_data_decoded.name).red.bold);
         break;
