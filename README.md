@@ -9,6 +9,7 @@ A live streaming app working over RTMP protocol using Apache,node.js and Nginx w
   - Download and install nginx
   - Go to the path where you have installed nginx, Go to conf directory, open ```nginx.conf``` or create it if not exists
   - clear the file content and paste the following configuration into the file and save it
+  
      ```
     worker_processes  1;
     
@@ -61,24 +62,32 @@ A live streaming app working over RTMP protocol using Apache,node.js and Nginx w
 - Nginx recieves the stream, triggers publish event, which sends stream data (not content of stream, jsut general data like stream name, the event name ,etc) to __http://127.0.0.1:8000__ which node.js server is listening on
 
     ```on_publish http://127.0.0.1:8000/;```
-- node.js server gets the data, checks event and sends response to Nginx, Nginx catches data from __HTTP headers__, so that if you send 3** status with Location header, Nginx will publish the incoming stream on the value of Location header
-consider that when you set on_publish event in Nginx server config, Nginx will wait for response from __http://127.0.0.1:8000/__ after getting each stream, if it recieves status code 3**, will redirect stream to the name passed in __Location header__, if 2**, it will continue RTMP session and otherwise, RTMP connection will drop
+    
+- node.js server gets the data, checks event and sends response to Nginx, Nginx catches data from __HTTP headers__, so that if server.js return 3** status with Location header, Nginx will publish the incoming stream on the value of Location header
+
+consider that when you set **on_publish** event in Nginx server config, Nginx will wait for response from __http://127.0.0.1:8000/__ after getting each stream, if it recieves status code 3**, will redirect stream to the name passed in __Location header__, if 2**, it will continue RTMP session and otherwise, RTMP connection will drop
+
 also note that server.js defines an array named ```streams``` which holds name of live streams, the array is pushed on each ```on_publish``` and is spliced on each ```on_publish_done``` (triggers when stream ends) event
 
 - since we have the line :
 
 ```hls_nested on;```
+
     in ```nginx.cong``` file, Nginx will create HLS manifest and segments in the path specified by this line :
     
 ```hls_path path_to_public_html/live;```
+
     and in a directory with the name server.js returns in __Location header__
-- now, when you enter __http://your.host__ in your browser, apache returns index.html which then loads index.js, then javascript sends XHR HTTP to port 333 which server.js is listening on and will return a JSON encoded array of live streams
+- now, when you enter __http://your.host__ in your browser, apache returns index.html which then loads index.js, then javascript sends XHR HTTP to port 333 which server.js is listening on and will return a JSON encoded array of live stream names
 - JS decodes string and displays live streams in links like :
 
     ```http://your.host/display.html?name=<stream_name>```
+    
 - by clicking on any link, you'll go to ```display.html``` page which has a ```display.js``` aside
 - ```display.js``` gets stream name and sets 
+
 ```http://your.host/live/<stream_name>/index.m3u8``` 
+
 as HLS manifest and finally HLS gets segments and play them by turn
 
 
