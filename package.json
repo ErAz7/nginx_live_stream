@@ -9,17 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/erfanAz/nginx_live_stream.git"
+    "url": "git+https://github.com/ErAz7/nginx_live_stream.git"
   },
   "keywords": [
     "livestream"
   ],
-  "author": "ErAz",
-  "license": "MIT",
+  "author": "ErAz7",
+  "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/erfanAz/nginx_live_stream/issues"
+    "url": "https://github.com/ErAz7/nginx_live_stream/issues"
   },
-  "homepage": "https://github.com/erfanAz/nginx_live_stream#readme",
+  "homepage": "https://github.com/ErAz7/nginx_live_stream#readme",
   "dependencies": {
     "colors": "^1.3.3"
   }
